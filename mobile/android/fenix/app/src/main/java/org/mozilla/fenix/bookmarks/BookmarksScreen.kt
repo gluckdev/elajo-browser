@@ -1157,15 +1157,11 @@ private fun BookmarkListOverflowMenu(
     onDismissRequest: () -> Unit,
     store: BookmarksStore,
 ) {
-    val menuItems = listOfNotNull(
+    val menuItems = listOf(
         MenuItem.TextItem(
             text = Text.Resource(R.string.bookmark_menu_select_all_bookmarks),
             onClick = { store.dispatch(BookmarksListMenuAction.SelectAll) },
         ),
-        MenuItem.TextItem(
-            text = Text.Resource(R.string.bookmark_menu_open_in_new_tab_button),
-            onClick = { store.dispatch(BookmarksListMenuAction.MultiSelect.OpenInNormalTabsClicked) },
-        ).takeIf { !LocalContext.current.components.settings.shouldDisableNormalMode },
         MenuItem.TextItem(
             text = Text.Resource(R.string.bookmark_menu_open_in_private_tab_button),
             onClick = { store.dispatch(BookmarksListMenuAction.MultiSelect.OpenInPrivateTabsClicked) },
@@ -1226,7 +1222,7 @@ private fun BookmarkListItemMenu(
     bookmark: BookmarkItem.Bookmark,
     dispatcher: (BookmarksAction) -> Unit,
 ) {
-    val menuItems = listOfNotNull(
+    val menuItems = listOf(
         MenuItem.TextItem(
             text = Text.Resource(R.string.bookmark_menu_select_button),
             onClick = { dispatcher.invoke(BookmarksListMenuAction.Bookmark.SelectClicked(bookmark)) },
@@ -1243,10 +1239,6 @@ private fun BookmarkListItemMenu(
             text = Text.Resource(R.string.bookmark_menu_share_button),
             onClick = { dispatcher.invoke(BookmarksListMenuAction.Bookmark.ShareClicked(bookmark)) },
         ),
-        MenuItem.TextItem(
-            text = Text.Resource(R.string.bookmark_menu_open_in_new_tab_button),
-            onClick = { dispatcher.invoke(BookmarksListMenuAction.Bookmark.OpenInNormalTabClicked(bookmark)) },
-        ).takeIf { !LocalContext.current.components.settings.shouldDisableNormalMode },
         MenuItem.TextItem(
             text = Text.Resource(R.string.bookmark_menu_open_in_private_tab_button),
             onClick = { dispatcher.invoke(BookmarksListMenuAction.Bookmark.OpenInPrivateTabClicked(bookmark)) },
@@ -1271,7 +1263,7 @@ private fun BookmarkListFolderMenu(
     folder: BookmarkItem.Folder,
     dispatcher: (BookmarksAction) -> Unit,
 ) {
-    val menuItems = listOfNotNull(
+    val menuItems = listOf(
         MenuItem.TextItem(
             text = Text.Resource(R.string.bookmark_menu_select_button),
             onClick = { dispatcher.invoke(BookmarksListMenuAction.Folder.SelectClicked(folder)) },
@@ -1284,10 +1276,6 @@ private fun BookmarkListFolderMenu(
             text = Text.Resource(R.string.bookmark_menu_move_button),
             onClick = { dispatcher.invoke(BookmarksListMenuAction.Folder.MoveClicked(folder)) },
         ),
-        MenuItem.TextItem(
-            text = Text.Resource(R.string.bookmark_menu_open_all_in_tabs_button),
-            onClick = { dispatcher.invoke(BookmarksListMenuAction.Folder.OpenAllInNormalTabClicked(folder)) },
-        ).takeIf { !LocalContext.current.components.settings.shouldDisableNormalMode },
         MenuItem.TextItem(
             text = Text.Resource(R.string.bookmark_menu_open_all_in_private_tabs_button),
             onClick = { dispatcher.invoke(BookmarksListMenuAction.Folder.OpenAllInPrivateTabClicked(folder)) },
