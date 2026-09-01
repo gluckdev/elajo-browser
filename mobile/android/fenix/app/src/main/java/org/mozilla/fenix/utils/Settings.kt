@@ -1731,7 +1731,9 @@ class Settings(
         get() = false
         set(value) {}
 
-    var showSearchSuggestionsInPrivateOnboardingFinished = false
+    var showSearchSuggestionsInPrivateOnboardingFinished
+        get() = false
+        set(value) {}
 
     var shouldShowOpenInAppBanner by booleanPreference(
         appContext.getPreferenceKey(R.string.pref_key_should_show_open_in_app_banner),
