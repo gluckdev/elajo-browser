@@ -696,7 +696,6 @@ var gMainPane = {
     initSettingGroup("fonts");
     initSettingGroup("browserLanguage");
     initSettingGroup("websiteLanguage");
-    initSettingGroup("websiteSpoofEnglishControl");
     initSettingGroup("browsing");
     initSettingGroup("keyboardAndScrolling");
     initSettingGroup("motionAndLink");
